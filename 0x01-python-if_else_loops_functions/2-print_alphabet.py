@@ -4,32 +4,22 @@ import random
 
 number = random.randint(-10000, 10000)
 
-exe = 0
+digit = abs(number) % 10
 
 if number < 0:
 
-        number *= -1
+        digit = -digit
 
-            exe = 1
+        print("Last digit of {} is {} and is ".format(number, digit), end="")
 
-            lastd = number % 10
+        if digit > 5:
 
-            if exe == 1:
+                print("greater than 5")
 
-                    number *= -1
+            elif digit == 0:
 
-                        lastd *= -1
+                    print("0")
 
-                        print("Last digit of {:d} is ".format(number), end="")
+                else:
 
-                        if lastd > 5:
-
-                                print("{:d} and is greater than 5".format(lastd))
-
-                            elif lastd == 0:
-
-                                    print("{:d} and is 0".format(lastd))
-
-                                else:
-
-                                        print("{:d} and is less than 6 and not 0".format(lastd))
+                        print("less than 6 and not 0")
