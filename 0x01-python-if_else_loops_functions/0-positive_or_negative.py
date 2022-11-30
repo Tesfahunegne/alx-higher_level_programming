@@ -2,30 +2,16 @@
 
 import random
 
-number = random.randint(-10000, 10000)
-
-str1 = " and is greater than 5"
-
-str2 = " and is 0"
-
-str3 = " and is less than 6 and not 0"
+number = random.randint(-10, 10)
 
 if number < 0:
 
-        last = number % -10
+        print("{} is negative".format(number))
 
-    else:
+    elif number > 0:
 
-            last = number % 10
+            print("{} is positive".format(number))
 
-            if last > 5:
+        else:
 
-                    print("Last digit of {} is {}".format(number, last) + str1)
-
-                elif last == 0:
-
-                        print("Last digit of {} is {}".format(number, last) + str2)
-
-                    else:
-
-                            print("Last digit of {} is {}".format(number, last) + str3)
+                print("{} is zero".format(number))
