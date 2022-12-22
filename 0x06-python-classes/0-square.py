@@ -1,4 +1,8 @@
- class square"""
+ #!/usr/bin/python3
+
+
+
+"""Define a class square"""
 
 
 
