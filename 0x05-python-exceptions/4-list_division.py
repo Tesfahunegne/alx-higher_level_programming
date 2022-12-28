@@ -1,37 +1,63 @@
 #!/usr/bin/python3
 
+# 4-list_division.py
+
+# Brennan D Baraban <375@holbertonschool.com>
+
+
+
+
+
 def list_division(my_list_1, my_list_2, list_length):
 
-        result = []
+        """Divides two lists element by element.
 
-            for i in range(list_length):
 
-                        try:
 
-                                        result.append(my_list_1[i] / my_list_2[i])
+            Args:
 
-                                                    continue
+                    my_list_1 (list): The first list.
 
-                                                        except ZeroDivisionError:
+                            my_list_2 (list): The second list.
 
-                                                                        print("division by 0")
+                                    list_length (int): The number of elements to divide.
 
-                                                                                    result.append(0)
 
-                                                                                            except TypeError:
 
-                                                                                                            print("wrong type")
+                                        Returns:
 
-                                                                                                                        result.append(0)
+                                                A new list of length list_length containing all the divisions.
 
-                                                                                                                                except IndexError:
+                                                    """
 
-                                                                                                                                                print("out of range")
+                                                        new_list = []
 
-                                                                                                                                                            result.append(0)
+                                                            for i in range(0, list_length):
 
-                                                                                                                                                                    finally:
+                                                                        try:
 
-                                                                                                                                                                                    pass
+                                                                                        div = my_list_1[i] / my_list_2[i]
 
-                                                                                                                                                                                    return result
+                                                                                                except TypeError:
+
+                                                                                                                print("wrong type")
+
+                                                                                                                            div = 0
+
+                                                                                                                                    except ZeroDivisionError:
+
+                                                                                                                                                    print("division by 0")
+
+                                                                                                                                                                div = 0
+
+                                                                                                                                                                        except IndexError:
+
+                                                                                                                                                                                        print("out of range")
+
+                                                                                                                                                                                                    div = 0
+
+                                                                                                                                                                                                            finally:
+
+                                                                                                                                                                                                                            new_list.append(div)
+
+                                                                                                                                                                                                                                return (new_list)
