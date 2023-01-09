@@ -8,7 +8,6 @@ class Rectangle:
         self.height = height
         @property
         def width(self):
-        """Get/set the width of the rectangle."""
         return self.__width
     @width.setter
     def width(self, value):
