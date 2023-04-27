@@ -1,3 +1,7 @@
 #!/usr/bin/node
 
-console.log(process.argv[2] + ' is ' + process.argv[3]);
+const languages = ['C is fun', 'Python is cool', 'Javascript is amazing'];
+
+for (let i = 0; i < languages.length; ++i) {
+  console.log(languages[i]);
+}
