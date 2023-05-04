@@ -1,171 +1,224 @@
 #!/usr/bin/python3
-
 """
 
-Module creates the Rectangle class
+A module with a Rectangle that does nothing
 
 """
-
-
-
 
 
 class Rectangle:
+    """
+
+    An empty Rectangle class
+
+    """
+
+    def __init__(self, width=0, height=0):
+        """
+
+        Checks the parameters and initializes some values
+
+        Args:
+            width (:obj:`int`, optional): The width of the Rectangle.
+            height (:obj:`int`, optional): The height of the Rectangle.
 
         """
 
-            Class Rectangle with validated private instance attributes width and height
+        self.width = width
+        self.height = height
 
-                """
+    @property
+    def width(self):
+        """
 
+        Returns the width of the Rectangle
 
+        """
 
-                    def __init__(self, width=0, height=0):
+        return self.__width
 
-                                """Instantiates width and height using property setter
+    @width.setter
+    def width(self, value):
+        """
 
+        Checks the parameters and set the size of the Rectangle
 
+        Args:
+            value (int): The width of the Rectangle.
 
-                                        Args:
+        Raises:
+            TypeError: If `value` type is not `int`.
+            ValueError: If `value` is less than `0`.
 
-                                                    width: width of rectangle
+        """
 
-                                                                height: height of rectangle
+        self.__check_valid_width(value)
+        self.__width = value
 
-                                                                        """
+    @property
+    def height(self):
+        """
 
-                                                                                self.width = width
+        Returns the width of the Rectangle
 
-                                                                                        self.height = height
+        """
 
+        return self.__height
 
+    @height.setter
+    def height(self, value):
+        """
 
-                                                                                            def __str__(self):
+        Checks the parameters and set the size of the Rectangle
 
-                                                                                                        """Returns a string of Rectangle instance using #, empty string"""
+        Args:
+            value (int): The height of the Rectangle.
 
-                                                                                                                if self.width == 0 or self.height == 0:
+        Raises:
+            TypeError: If `value` type is not `int`.
+            ValueError: If `value` is less than `0`.
 
-                                                                                                                                return ""
+        """
 
-                                                                                                                                    row = "#" * self.width
+        self.__check_valid_height(value)
+        self.__height = value
 
-                                                                                                                                            rect = row
+    def __check_valid_width(self, width):
+        """
 
-                                                                                                                                                    for i in range(self.height - 1):
+        Checks if the width is a valid integer
 
-                                                                                                                                                                    rect += "\n" + row
+        Args:
+            width (int): The width of the Rectangle.
 
-                                                                                                                                                                            return rect
+        Raises:
+            TypeError: If `width` type is not `int`.
+            ValueError: If `width` is less than `0`.
 
+        """
 
+        if self.__check_int_value(width) is False:
+            raise TypeError('width must be an integer')
 
-                                                                                                                                                                            @property
+        if self.__check_positive_value(width) is False:
+            raise ValueError('width must be >= 0')
 
-                                                                                                                                                                                def width(self):
+    def __check_valid_height(self, height):
+        """
 
-                                                                                                                                                                                            """width: width of rectangle
+        Checks if the height is a valid integer
 
+        Args:
+            height (int): The height of the Rectangle.
 
+        Raises:
+            TypeError: If `height` type is not `int`.
+            ValueError: If `height` is less than `0`.
 
-                                                                                                                                                                                                    setter validates value is an integer >= 0
+        """
 
+        if self.__check_int_value(height) is False:
+            raise TypeError('height must be an integer')
 
+        if self.__check_positive_value(height) is False:
+            raise ValueError('height must be >= 0')
 
-                                                                                                                                                                                                            Parameter:
+    def __check_int_value(self, value):
+        """
 
-                                                                                                                                                                                                                        value: value of the width
+        Checks if the value is an integer
 
+        Args:
+            value (int): The number to verify
 
+        Returns:
+            int: If is a int `True`, `False` otherwise.
 
-                                                                                                                                                                                                                                Raises:
+        """
 
-                                                                                                                                                                                                                                            TypeError: if value is not an integer
+        if type(value) is int:
+            return True
 
-                                                                                                                                                                                                                                                        ValueError: if value is < 0
+        return False
 
-                                                                                                                                                                                                                                                                """
+    def __check_positive_value(self, value):
+        """
 
-                                                                                                                                                                                                                                                                        return self.__width
+        Checks if the value is a positive integer
 
+        Args:
+            value (int): The number to verify
 
+        Returns:
+            int: `True` If value is greater than
+            or equal to 0, `False` otherwise.
 
-                                                                                                                                                                                                                                                                        @width.setter
+        """
 
-                                                                                                                                                                                                                                                                            def width(self, value):
+        if value >= 0:
+            return True
 
-                                                                                                                                                                                                                                                                                        if type(value) is not int:
+        return False
 
-                                                                                                                                                                                                                                                                                                        raise TypeError("width must be an integer")
+    def area(self):
+        """
 
-                                                                                                                                                                                                                                                                                                            if value < 0:
+        Computes the area of a Rectangle.
 
-                                                                                                                                                                                                                                                                                                                            raise ValueError("width must be >= 0")
+        Returns:
+            int: The area of a Rectangle.
 
-                                                                                                                                                                                                                                                                                                                                self.__width = value
+        """
 
+        return self.__width * self.__height
 
+    def perimeter(self):
+        """
 
-                                                                                                                                                                                                                                                                                                                                    @property
+        Computes the perimeter of a Rectangle.
 
-                                                                                                                                                                                                                                                                                                                                        def height(self):
+        Returns:
+            int: The perimeter of a Rectangle.
 
-                                                                                                                                                                                                                                                                                                                                                    """height: height of rectangle
+        """
 
+        if self.__width == 0 or self.__height == 0:
+            return 0
 
+        return self.__width * 2 + self.__height * 2
 
-                                                                                                                                                                                                                                                                                                                                                            setter validates value is an integer >= 0
+    def __draw_rectangle(self):
+        """
 
+        Draw the Rectangle with their size
 
+        Returns:
+            str: `Empty` If width or height is `0`,
+            otherwise returns a string with the Rectangle.
 
-                                                                                                                                                                                                                                                                                                                                                                    Parameter:
+        """
 
-                                                                                                                                                                                                                                                                                                                                                                                value: value of the height
+        rect_str = ''
+        w = self.__width
+        h = self.__height
 
+        if w == 0 or h == 0:
+            return rect_str
 
+        for i in range(h):
+            for j in range(w):
+                rect_str += '#'
 
-                                                                                                                                                                                                                                                                                                                                                                                        Raises:
+            if i != h - 1:
+                rect_str += '\n'
 
-                                                                                                                                                                                                                                                                                                                                                                                                    TypeError: if value is not an integer
+        return rect_str
 
-                                                                                                                                                                                                                                                                                                                                                                                                                ValueError: if value is < 0
+    def __str__(self):
+        """
 
-                                                                                                                                                                                                                                                                                                                                                                                                                        """
+        Returns a string with the representation of the Rectangle.
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                return self.__height
+        """
 
-
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                @height.setter
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                    def height(self, value):
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                if type(value) is not int:
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                raise TypeError("height must be an integer")
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    if value < 0:
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    raise ValueError("height must be >= 0")
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        self.__height = value
-
-
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            def area(self):
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        """Returns the calculated area of Rectangle instance"""
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                return self.width * self.height
-
-
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                def perimeter(self):
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            """Returns the calculated perimeter of Rectangle instance"""
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    if self.height == 0 or self.width == 0:
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    return 0
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        return (self.width + self.height) * 2
+        return self.__draw_rectangle()
